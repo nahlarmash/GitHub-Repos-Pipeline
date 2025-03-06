@@ -19,7 +19,7 @@ This project builds a data pipeline to process GitHub's most popular repositorie
 - **PySpark** - For ETL Pipeline  
 - **pgAdmin** - To visualize the stored data
 
-## 🛠Setup Instructions  
+## Setup Instructions  
 ### 1. Clone the Repository  
 ```bash
 git clone https://github.com/nahlarmash/GitHub-Repos-Pipeline.git  
