@@ -1,0 +1,62 @@
+services:
+  spark-master:
+    image: bitnami/spark:3.4.1
+    container_name: spark-master
+    hostname: spark-master
+    environment:
+      - SPARK_MODE=master
+    ports:
+      - "9090:8080"   # Spark Web UI
+      - "7077:7077"   # Spark Master Port
+    networks:
+      - spark_network
+    volumes:
+      - ./data:/opt/spark/data  # Mount local ./data directory into Spark
+      - ./main.py:/opt/spark/main.py
+
+  spark-worker:
+    image: bitnami/spark:3.4.1
+    container_name: spark-worker
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    networks:
+      - spark_network
+    volumes:
+      - ./data:/opt/spark/data  # Ensures worker has access to the same data
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: github_repos
+    ports:
+      - "5432:5432"
+    networks:
+      - spark_network
+    volumes:
+      - pg_data:/var/lib/postgresql/data  # Persistent storage for PostgreSQL
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - spark_network
+
+networks:
+  spark_network:
+    driver: bridge
+
+volumes:
+  pg_data:  # Persistent volume for PostgreSQL
