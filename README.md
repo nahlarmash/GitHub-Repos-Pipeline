@@ -32,7 +32,7 @@ clone the repository or download it to your local machine.
 
 ### 2. Run the Project using Docker
 ```bash
-docker-compose up
+docker-compose up -id
 ```
 Then:
 ```
