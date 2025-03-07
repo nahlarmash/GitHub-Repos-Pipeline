@@ -1,11 +1,18 @@
 <h1 align="center">
 GitHub-Most-Popular-Repos
-<h1 align="center">
+
 
 ## Overview 
 This project builds a data pipeline to process GitHub's most popular repositories using Apache Spark and store the results in PostgreSQL. The pipeline extracts insights into programming languages, top organizations, and search term relevance based on GitHub repository data.
 
-## Features  
+## Data Pipeline Workflow 
+
+
+
+![Data Pipeline](https://github.com/nahlarmash/GitHub-Repos-Pipeline/blob/main/Results/Data%20Pipeline.png)
+
+The data flow follows these stages:
+
 - **Extracts JSON data** from multiple GitHub repository files.
 - **Processes data** using Apache Spark.  
 - **Stores results** in PostgreSQL.  
@@ -48,7 +55,7 @@ SELECT * FROM programming_lang order by repo_count DESC;
 ```
 
 #### Results:
-<img width="400" height="500" alt="image" src="https://github.com/nahlarmash/GitHub-Repos-Pipeline/blob/main/Screenshots/programing_lang.png">
+<img width="400" height="500" alt="image" src="https://github.com/nahlarmash/GitHub-Repos-Pipeline/blob/main/Results/programing_lang.png">
 </h1> 
 
 ### 2️- Organizations & Stars Analysis
@@ -61,7 +68,7 @@ SELECT * FROM organizations_stars ORDER BY total_stars DESC;
 ```
 
 #### Results:
-<img width="400" height="500" alt="image" src="https://github.com/nahlarmash/GitHub-Repos-Pipeline/blob/main/Screenshots/organizations_stars.png">
+<img width="400" height="500" alt="image" src="https://github.com/nahlarmash/GitHub-Repos-Pipeline/blob/main/Results/organizations_stars.png">
 </h1> 
 
 
@@ -84,7 +91,7 @@ SELECT * FROM organizations_stars ORDER BY total_stars DESC;
 ```
 
 #### Results:
-<img width="400" height="500" alt="image" src="https://github.com/nahlarmash/GitHub-Repos-Pipeline/blob/main/Screenshots/search_terms_relevance.png">
+<img width="400" height="500" alt="image" src="https://github.com/nahlarmash/GitHub-Repos-Pipeline/blob/main/Results/search_terms_relevance.png">
 </h1> 
 
 ## Accessing PostgreSQL & pgAdmin
