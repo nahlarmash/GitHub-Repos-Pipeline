@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.functions import col, sum as spark_sum, lit, count
+from pyspark.sql.functions import round, col, sum as spark_sum, lit, count
 from pyspark.sql.types import StructType, StructField, StringType, LongType
 import functools
 import os
@@ -84,7 +84,7 @@ organizations_stars_df = repos_df.filter(col("type") == "Organization") \
 # 3. Search Terms Relevance Table
 search_terms_relevance_df = repos_df.groupBy("search_term") \
     .agg(
-        spark_sum(1.5 * col("forks") + 1.32 * col("subscribers") + 1.04 * col("stars")).alias("relevance_score")
+        round(spark_sum(1.5 * col("forks") + 1.32 * col("subscribers") + 1.04 * col("stars")), 2).alias("relevance_score")
     )
 
 # Function to write DataFrame to PostgreSQL
