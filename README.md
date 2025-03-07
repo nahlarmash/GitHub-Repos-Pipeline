@@ -28,14 +28,31 @@ The data flow follows these stages:
 
 ## Setup Instructions  
 ### 1. Clone the Repository  
-```bash
-git clone https://github.com/nahlarmash/GitHub-Repos-Pipeline.git  
-```
+clone the repository or download it to your local machine.
 
 ### 2. Run the Project using Docker
 ```bash
 docker-compose up
 ```
+Then:
+```
+docker exec -it docker-container-id bash
+```
+
+Then:
+```
+python /opt/spark/main.py
+```
+
+Then access PostgreSQL & pgAdmin
+
+- pgAdmin UI: http://localhost:5050
+- PostgreSQL Connection Details:
+
+  - Host: postgres
+  - Port: 5432
+  - User: admin
+  - Password: password
 
 This will:
 
