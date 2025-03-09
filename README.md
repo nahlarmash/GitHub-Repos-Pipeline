@@ -111,12 +111,3 @@ SELECT * FROM organizations_stars ORDER BY total_stars DESC;
 <img width="400" height="500" alt="image" src="https://github.com/nahlarmash/GitHub-Repos-Pipeline/blob/main/Results/search_terms_relevance.png">
 </h1> 
 
-## Accessing PostgreSQL & pgAdmin
-
-- pgAdmin UI: http://localhost:5050
-- PostgreSQL Connection Details:
-
-  - Host: postgres
-  - Port: 5432
-  - User: admin
-  - Password: password
